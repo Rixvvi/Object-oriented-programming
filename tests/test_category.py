@@ -11,13 +11,16 @@ def counting_everything() -> None:
 
 @pytest.fixture
 def category_init(counting_everything):
-    return Category("Бытовая техника", "Качественные товары", ["Ноутбук", "Кофемашина"])
+    product1 = Product("Ноутбук", "Для учебы", 80000.0, 2)
+    product2 = Product("Кофемашина", "Для дома", 15000.0, 3)
+    return Category("Бытовая техника", "Качественные товары", [product1, product2])
 
 
 def test_category(category_init) -> None:
     assert category_init.name == "Бытовая техника"
     assert category_init.description == "Качественные товары"
-    assert category_init.products == ["Ноутбук", "Кофемашина"]
+    assert category_init.products == ['Ноутбук, 80000.0 руб. Остаток: 2 шт.',
+                                      'Кофемашина, 15000.0 руб. Остаток: 3 шт.']
 
 
 def test_counting(category_init) -> None:
@@ -26,7 +29,7 @@ def test_counting(category_init) -> None:
 
 
 @pytest.fixture
-def list_product():
+def list_product(counting_everything):
     product1 = Product("Яблоки", "Вкусные и сочные", 120.0, 21)
     product2 = Product("Бананы", "Спелые и питательные", 170.0, 10)
     product3 = Product("Апельсины", "Крупные и сладкие", 99.0, 14)
