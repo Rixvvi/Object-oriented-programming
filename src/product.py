@@ -14,8 +14,8 @@ class Product:
     def new_product(cls, product: dict):
         return cls(
             product["name"],
-            product["price"],
             product["description"],
+            product["price"],
             product["quantity"]
         )
 
