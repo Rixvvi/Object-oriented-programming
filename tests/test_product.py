@@ -37,3 +37,16 @@ def test_price_zero():
     product = Product("Яблоки", "Вкусные и сочные", 120.0, 21)
     product.price = 0
     assert product.price == 120.0
+
+
+def test_str_product():
+    first_product = Product("Мотоцикл", "Алый глянцевый", 300000.0, 3)
+    assert str(first_product) == 'Мотоцикл, 300000.0 руб. Остаток: 3 шт.'
+
+
+def test_add_product():
+    first = Product("Медведь", "Бурый трусливый", 1000000.0, 2)
+    second = Product("Мышь", "Крупная, серого цвета", 600.0, 8)
+
+    result = first + second
+    assert result == 2004800.0

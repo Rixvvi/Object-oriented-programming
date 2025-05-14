@@ -63,3 +63,7 @@ def category():
 def test_isinstance(category):
     with pytest.raises(TypeError):
         category.add_product("Не продукт")
+
+
+def test_str_category(list_product):
+    assert str(list_product) == 'Фрукты, количество продуктов: 45 шт.'
