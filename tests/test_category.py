@@ -53,3 +53,13 @@ def test_products(list_product):
                'Апельсины, 99.0 руб. Остаток: 14 шт.']
 
     assert result == my_data
+
+
+@pytest.fixture
+def category():
+    return Category("Электроника", "Гаджеты", [])
+
+
+def test_isinstance(category):
+    with pytest.raises(TypeError):
+        category.add_product("Не продукт")
