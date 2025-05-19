@@ -1,5 +1,3 @@
-from abc import ABC, abstractmethod
-
 import pytest
 
 from src.product import Product, Smartphone, LawnGrass, BaseProduct
