@@ -1,6 +1,6 @@
 import pytest
 
-from src.product import Product, Smartphone, LawnGrass
+from src.product import Product, Smartphone, LawnGrass, BaseProduct
 
 
 @pytest.fixture
@@ -81,3 +81,14 @@ def test_added_class():
     assert grass1.country == "Россия"
     assert grass1.germination_period == "7 дней"
     assert grass1.color == "Зеленый"
+
+
+def test_base_instantiated():
+    with pytest.raises(TypeError):
+        BaseProduct("Перец", "Болгарский", 100.0, 6)
+
+
+def test_mixin(capsys):
+    Product("Трактор", "Новый красный трактор с прицепом", 2300000.0, 1)
+    captured = capsys.readouterr()
+    assert "Product('Трактор', 'Новый красный трактор с прицепом', 2300000.0, 1)\n" == captured.out
