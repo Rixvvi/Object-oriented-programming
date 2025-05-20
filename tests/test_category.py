@@ -67,3 +67,16 @@ def test_isinstance(category):
 
 def test_str_category(list_product):
     assert str(list_product) == 'Фрукты, количество продуктов: 45 шт.'
+
+
+@pytest.fixture
+def product_in_category():
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 4)
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+    return Category("Смартфоны", "Категория смартфонов", [product1, product2, product3])
+
+
+def test_middle_price(product_in_category):
+    result = product_in_category.middle_price()
+    assert result == 140333.33333333334

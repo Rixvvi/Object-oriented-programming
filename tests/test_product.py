@@ -92,3 +92,8 @@ def test_mixin(capsys):
     Product("Трактор", "Новый красный трактор с прицепом", 2300000.0, 1)
     captured = capsys.readouterr()
     assert "Product('Трактор', 'Новый красный трактор с прицепом', 2300000.0, 1)\n" == captured.out
+
+
+def test_value_error():
+    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен'):
+        Product("Samsung Galaxy S23 Ultra", "Бракованный", 180000.0, 0)
